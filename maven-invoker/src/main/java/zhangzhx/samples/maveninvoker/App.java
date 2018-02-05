@@ -12,14 +12,14 @@ import org.apache.maven.shared.invoker.MavenInvocationException;
 
 public class App {
 
-	public static void main(String[] args) throws MavenInvocationException {
+    public static void main(String[] args) throws MavenInvocationException {
         String mavenHome = "/usr/local/Cellar/maven/3.3.9";
         String path = "/Users/zhaoxiz/Workspace/MavenProjects";
-        
+
         InvocationRequest request = new DefaultInvocationRequest();
         request.setShellEnvironmentInherited(false);
         request.setBaseDirectory(new File(path));
-        
+
         request.setGoals(Collections.singletonList("archetype:generate"));
         Properties properties = new Properties();
         properties.put("interactiveMode", "false");
@@ -30,9 +30,10 @@ public class App {
         properties.put("artifactId", "quickstart");
         properties.put("version", "1.0");
         request.setProperties(properties);
-        
+
         Invoker invoker = new DefaultInvoker();
         invoker.setMavenHome(new File(mavenHome));
         invoker.execute(request);
+
     }
 }
